@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration>
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{ISO8601} |%X{FILE} |%p |%-4C:%L |%m%n</pattern>
+        </encoder>
+    </appender>     
+    <appender name="kafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{ISO8601} |%X{FILE} |%p |%-4C:%L |%m%n</pattern>
+        </encoder>
+        <topic>RobotOSE</topic>
+        <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy" />
+        <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy" /> 
+        <producerConfig>bootstrap.servers=172.19.62.15:9092</producerConfig>
+		<appender-ref ref="Console" />
+    </appender>
+    <root level="info">
+        <appender-ref ref="kafkaAppender" />
+    </root>  
+</configuration>

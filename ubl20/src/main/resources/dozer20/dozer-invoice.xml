@@ -1,0 +1,1293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+          xmlns='http://dozer.sourceforge.net'
+          xsi:schemaLocation='http://dozer.sourceforge.net
+                   http://dozer.sourceforge.net/schema/beanmapping.xsd'>
+    <mapping type="one-way" >
+        <class-a>com.axteroid.ose.server.tools.edocu.EDocumento</class-a>
+        <class-b>oasis.names.specification.ubl.schema.xsd.invoice_2.InvoiceType</class-b>
+        <field>
+            <a>items</a>
+            <b>invoiceLine</b>
+            <a-hint>com.axteroid.ose.server.tools.edocu.EDocumentoItem</a-hint>
+            <b-hint>oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.InvoiceLineType</b-hint>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="CustomizationIDType"
+                >
+            <a>version</a>
+            <b>customizationID</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="UBLVersionIDType"
+                >
+            <a>versionUBL</a>
+            <b>ublVersionID</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>serieNumero</a>
+            <b>id</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.DateToXmlGregorianCalendarConverter">
+            <a>fechaEmision</a>
+            <b>issueDate</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.DateToXmlGregorianCalendarConverter"  
+        custom-converter-param="paymentDueDate">
+            <a>fechaVencimiento</a>
+            <b set-method="insertPaymentDueDate">paymentMeans</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPartyLegalEntityTypeConverter"
+               custom-converter-param="RegistrationNameType">
+            <a>razonSocialEmisor</a>
+            <b set-method="insertPartyLegalEntity">accountingSupplierParty.party.partyLegalEntity</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToListTypeConverter"
+               custom-converter-param="NameType">
+            <a>nombreComercialEmisor</a>
+            <b is-accessible="true">accountingSupplierParty.party.partyName</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToSignTypeConverter"
+               custom-converter-param="NameType">
+            <a>rucRazonSocialEmisor</a>
+            <b set-method="insertSignatureType">signature</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>ubigeoEmisor</a>
+            <b>accountingSupplierParty.party.postalAddress.id</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="StreetNameType">
+            <a>direccionEmisor</a>
+            <b>accountingSupplierParty.party.postalAddress.streetName</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="CitySubdivisionNameType">
+            <a>urbanizacion</a>
+            <b>accountingSupplierParty.party.postalAddress.citySubdivisionName</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="CityNameType">
+            <a>provinciaEmisor</a>
+            <b>accountingSupplierParty.party.postalAddress.cityName</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTextTypeConverter"
+               custom-converter-param="CountrySubentityType">
+            <a>departamentoEmisor</a>
+            <b>accountingSupplierParty.party.postalAddress.countrySubentity</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTextTypeConverter"
+               custom-converter-param="DistrictType">
+            <a>distritoEmisor</a>
+            <b>accountingSupplierParty.party.postalAddress.district</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCountryTypeConverter"
+                >
+            <a>paisEmisor</a>
+            <b>accountingSupplierParty.party.postalAddress.country</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="CustomerAssignedAccountIDType"
+                >
+            <a>numeroDocumentoEmisor</a>
+            <b>accountingSupplierParty.customerAssignedAccountID</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToListIdentifierTypeConverter"
+               custom-converter-param="AdditionalAccountIDType"
+                >
+            <a>tipoDocumentoEmisor</a>
+            <b is-accessible="true">accountingSupplierParty.additionalAccountID</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCodeTypeConverter"
+               custom-converter-param="InvoiceTypeCodeType"
+                >
+            <a>tipoDocumento</a>
+            <b>invoiceTypeCode</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="CustomerAssignedAccountIDType"
+                >
+            <a>numeroDocumentoAdquiriente</a>
+            <b>accountingCustomerParty.customerAssignedAccountID</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToListIdentifierTypeConverter"
+               custom-converter-param="AdditionalAccountIDType"
+                >
+            <a>tipoDocumentoAdquiriente</a>
+            <b is-accessible="true">accountingCustomerParty.additionalAccountID</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPartyLegalEntityTypeConverter"
+               custom-converter-param="RegistrationNameType">
+            <a>razonSocialAdquiriente</a>
+            <b set-method="insertPartyLegalEntity">accountingCustomerParty.party.partyLegalEntity</b>
+        </field>
+        
+        <!-- JLCB - COMENTAR EN PRODUCCION - DESCOMENTAR EN TESTING -->
+<!--         <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDescriptionTypeConverter">
+            <a>lugarDestino</a>
+            <b>accountingCustomerParty.party.physicalLocation.description</b>
+        </field> -->
+        
+<!-- 
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>ubigeoAdquiriente</a>
+            <b>accountingCustomerParty.party.postalAddress.id</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="StreetNameType">
+            <a>direccionAdquiriente</a>
+            <b>accountingCustomerParty.party.postalAddress.streetName</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="CitySubdivisionNameType">
+            <a>urbanizacionAdquiriente</a>
+            <b>accountingCustomerParty.party.postalAddress.citySubdivisionName</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="CityNameType">
+            <a>provinciaAdquiriente</a>
+            <b>accountingCustomerParty.party.postalAddress.cityName</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTextTypeConverter"
+               custom-converter-param="CountrySubentityType">
+            <a>departamentoAdquiriente</a>
+            <b>accountingCustomerParty.party.postalAddress.countrySubentity</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTextTypeConverter"
+               custom-converter-param="DistrictType">
+            <a>distritoAdquiriente</a>
+            <b>accountingCustomerParty.party.postalAddress.district</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCountryTypeConverter"
+                >
+            <a>paisAdquiriente</a>
+            <b>accountingCustomerParty.party.postalAddress.country</b>
+        </field>
+-->
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringListToAddressType">
+            <a get-method="buildDireccionAdquiriente">direccionAdquiriente</a>
+            <b set-method="insertPostalAddressType">accountingCustomerParty</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToUBLExtensionTypeConverter"
+               custom-converter-param="TotalValorVentaNetoOpGravadas">
+            <a get-method="buildTotalValorVentaNetoOpGravadas">totalValorVentaNetoOpGravadas</a>
+            <b set-method="insertUBLExtensionMoneratyType">ublExtensions.additionalMonetaryTotal</b>
+        </field>
+
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToUBLExtensionTypeConverter"
+               custom-converter-param="TotalValorVentaNetoOpNoGravada">
+            <a get-method="buildTotalValorVentaNetoOpNoGravadas">totalValorVentaNetoOpNoGravada</a>
+            <b set-method="insertUBLExtensionMoneratyType">ublExtensions.additionalMonetaryTotal</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToUBLExtensionTypeConverter"
+               custom-converter-param="TotalValorVentaNetoOpExoneradas">
+            <a get-method="buildTotalValorVentaNetoOpExoneradas">totalValorVentaNetoOpExoneradas</a>
+
+            <b set-method="insertUBLExtensionMoneratyType">ublExtensions.additionalMonetaryTotal</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToUBLExtensionTypeConverter"
+               custom-converter-param="TotalValorVentaNetoOpGratuitas">
+            <a get-method="buildTotalValorVentaNetoOpGratuitas">totalValorVentaNetoOpGratuitas</a>
+            <b set-method="insertUBLExtensionMoneratyType">ublExtensions.additionalMonetaryTotal</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToUBLExtensionTypeConverter"
+               custom-converter-param="TotalFondoInclusionSocial">
+            <a get-method="buildTotalFondoInclusionSocial">TotalFondoInclusionSocial</a>
+            <b set-method="insertUBLExtensionMoneratyType">ublExtensions.additionalMonetaryTotal</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToUBLExtensionTypeConverter"
+               custom-converter-param="TotalDescuentos">
+            <a get-method="buildTotalDescuentos">totalDescuentos</a>
+            <b set-method="insertUBLExtensionMoneratyType">ublExtensions.additionalMonetaryTotal</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToUBLExtensionTypeConverter"
+               custom-converter-param="TotalPercepcion">
+            <a get-method="buildTotalPercepcion">totalPercepcion</a>
+            <b set-method="insertUBLExtensionMoneratyType">ublExtensions.additionalMonetaryTotal</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToUBLExtensionTypeConverter"
+               custom-converter-param="TotalRetencion">
+            <a get-method="buildTotalRetencion">totalRetencion</a>
+            <b set-method="insertUBLExtensionMoneratyType">ublExtensions.additionalMonetaryTotal</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.String2ToUBLExtensionTypeConverter"
+               custom-converter-param="TotalDetraccion">
+            <a get-method="buildTotalDetraccion">totalDetraccion</a>
+            <b set-method="insertUBLExtensionMoneratyType">ublExtensions.additionalMonetaryTotal</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToUBLExtensionTypeConverter"
+               custom-converter-param="TotalBonificacion">
+            <a get-method="buildTotalBonificacion">totalBonificacion</a>
+            <b set-method="insertUBLExtensionMoneratyType">ublExtensions.additionalMonetaryTotal</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAddressType">
+            <a get-method="buildDireccionPtoPartida">ubigeoDireccionPtoPartida</a>
+            <b set-method="insertSunatOriginAddressType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAddressType">
+            <a get-method="buildDireccionPtoLlegada">ubigeoDireccionPtoLlegada</a>
+            <b set-method="insertSunatDeliveryAddressType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToRoadTransportType">
+            <a get-method="buildMarcaPlacaVehiculo">marcaVehiculo</a>
+            <b set-method="insertSunatRoadTransportType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDriverPartyType">
+            <a>numeroLicenciaConducir</a>
+            <b set-method="insertSunatDriverPartyType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToSunatCarrierPartyType">
+            <a get-method="buildTransportista">numeroRucTransportista</a>
+            <b set-method="insertSunatCarrierPartyType">ublExtensions.additionalPropertyType</b>
+        </field>
+<!-- HNA - 01Oct2015: La razon social transportista pasa al grupo SUNATCarrierParty en vez de SUNATShipmentStage    
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToSunatShipmentStageType">
+            <a>razonSocialTransportista</a>
+            <b set-method="insertSunatShipmentStageType">ublExtensions.additionalPropertyType</b>
+        </field>
+-->         
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>tipoOperacionFactura</a>
+            <b set-method="insertSunatTransactionType">ublExtensions.additionalPropertyType</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="PrepaidAmountType">
+            <a get-method="buildTotalDocumentoAnticipo">totalDocumentoAnticipo</a>
+            <b>legalMonetaryTotal.prepaidAmount</b>
+        </field>
+        
+        <!-- HNA - 28Oct2015: RS185 INICIO -->
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAddressType">
+            <a get-method="buildDireccionLugarEntrega">ubigeoLugarEntrega</a>
+            <b set-method="insertSellerSupplierPartyType">sellerSupplierParty</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTransportModeType">
+            <a>modalidadTransporte</a>
+            <b set-method="insertTransportModeCodeType">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToMeasureTypeConverter"
+        		custom-converter-param="GrossWeightMeasureType">
+            <a get-method="buildTotalPesoBruto">totalPesoBruto</a>
+            <b set-method="insertGrossWeightMeasureType">ublExtensions.additionalPropertyType</b>
+        </field>
+        		<!-- TODO: si agregan constancia y marca adaptar con StringToRoadTransportType -->
+		<field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToSunatCostsType">
+            <a>placaVehiculoRenta</a>
+            <b set-method="insertSunatCostsType">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+		<field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToMaritimeTransportType">
+            <a get-method="buildMaritimeTransport">matriculaNombreEmbarcacion</a>
+            <b set-method="insertMaritimeTransportType">ublExtensions.additionalPropertyType</b>
+        </field>
+
+		<field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDescriptionTypeConverter">
+            <a>descripcionEspecieVendida</a>
+            <b set-method="insertDescriptionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="StreetNameType">
+            <a>lugarDescarga</a>
+            <b set-method="insertStreetNameType">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.DateToXmlGregorianCalendarConverter"  
+        custom-converter-param="deliveryDate">
+            <a>fechaDescarga</a>
+            <b set-method="insertDeliveryDateType">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="AmountType">
+            <a get-method="buildMontoReferencial">montoReferencial</a>
+            <b set-method="insertSunatReferenceValueAmount">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="AmountType">
+            <a get-method="buildMontoReferencialPreliminar">montoReferencialPreliminar</a>
+            <b set-method="insertSunatValueTravelAmount">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.BooleanToReturnabilityIndicatorTypeConverter">
+            <a>factorRetornoViaje</a>
+            <b set-method="insertReturnabilityIndicatorType">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="StreetNameType">
+            <a>puntoOrigenViaje</a>
+            <b set-method="insertSunatValueTravelOrigin">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="StreetNameType">
+            <a>puntoDestinoViaje</a>
+            <b set-method="insertSunatValueTravelDelivery">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToSunatQuantityTypeConverter"
+        	custom-converter-param="group">        		
+            <a get-method="buildCargaEfectivaVehiculo">cargaEfectivaVehiculo</a>
+            <b set-method="insertSunatValueVehicleQuantity">ublExtensions.additionalPropertyType</b>
+        </field>                 
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="AmountType">
+            <a get-method="buildMontoReferencialVehiculo">montoReferencialVehiculo</a>
+            <b set-method="insertSunatValueVehicleAmount">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCodeTypeConverter"
+        	custom-converter-param="TransportMeansTypeCode">
+            <a>configuracionVehicular</a>
+            <b set-method="insertSunatTransportMeansTypeCode">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToSunatQuantityTypeConverter"
+        	custom-converter-param="group">        		
+            <a get-method="buildCargaUtilTnVehiculo">cargaUtilTnVehiculo</a>
+            <b set-method="insertSunatTransportQuantity">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="AmountType">
+            <a get-method="buildMontoReferencialTM">montoReferencialTM</a>
+            <b set-method="insertSunatTransporAmount">ublExtensions.additionalPropertyType</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>ordenCompra</a>
+            <b set-method="insertOrderReference">orderReference</b>
+        </field>
+        <!-- HNA - 28Oct2015: RS185 FIN -->        
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>leyenda_1</a>
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_2</a>
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_3</a>
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_4</a>
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_5</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_6</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_7</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_8</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_9</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_10</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_11</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_12</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_13</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_14</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_15</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_16</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_17</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_18</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_19</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter"
+                >
+            <a>leyenda_20</a>
+
+            <b set-method="insertUBLExtensionType">ublExtensions.additionalPropertyType</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCodeTypeConverter"
+               custom-converter-param="DocumentCurrencyCodeType"
+                >
+            <a>tipoMoneda</a>
+            <b>documentCurrencyCode</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDespatchDocumentReferenceTypeConverter"
+                >
+            <a>documentoReferencia_1</a>
+            <b set-method="insertDespatchDocumentReference">despatchDocumentReference</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDespatchDocumentReferenceTypeConverter"
+                >
+            <a>documentoReferencia_2</a>
+            <b set-method="insertDespatchDocumentReference">despatchDocumentReference</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDespatchDocumentReferenceTypeConverter"
+                >
+            <a>documentoReferencia_3</a>
+            <b set-method="insertDespatchDocumentReference">despatchDocumentReference</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDespatchDocumentReferenceTypeConverter"
+                >
+            <a>documentoReferencia_4</a>
+            <b set-method="insertDespatchDocumentReference">despatchDocumentReference</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDespatchDocumentReferenceTypeConverter"
+                >
+            <a>documentoReferencia_5</a>
+            <b set-method="insertDespatchDocumentReference">despatchDocumentReference</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDespatchDocumentReferenceTypeConverter"
+                >
+            <a>documentoReferenciaAdicional_1</a>
+            <b set-method="insertAdditionalDocumentReference">additionalDocumentReference</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDespatchDocumentReferenceTypeConverter"
+                >
+            <a>documentoReferenciaAdicional_2</a>
+            <b set-method="insertAdditionalDocumentReference">additionalDocumentReference</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDespatchDocumentReferenceTypeConverter"
+                >
+            <a>documentoReferenciaAdicional_3</a>
+            <b set-method="insertAdditionalDocumentReference">additionalDocumentReference</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDespatchDocumentReferenceTypeConverter"
+                >
+            <a>documentoReferenciaAdicional_4</a>
+            <b set-method="insertAdditionalDocumentReference">additionalDocumentReference</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDespatchDocumentReferenceTypeConverter"
+                >
+            <a>documentoReferenciaAdicional_5</a>
+            <b set-method="insertAdditionalDocumentReference">additionalDocumentReference</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar100_1</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar100_2</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar100_3</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar100_4</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar100_5</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar100_6</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar100_7</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar100_8</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar100_9</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar100_10</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_1</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_2</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_3</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_4</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_5</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_6</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_7</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_8</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_9</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_10</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_11</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_12</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_13</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_14</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_15</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_16</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_17</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_18</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_19</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar40_20</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_1</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_2</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_3</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_4</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_5</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_6</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_7</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_8</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_9</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_10</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_11</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_12</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_13</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_14</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_15</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_16</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_17</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_18</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_19</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_20</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_21</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_22</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_23</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_24</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar250_25</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar500_1</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar500_2</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar500_3</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar500_4</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAdditionalPropertyTypeConverter">
+            <a>auxiliar500_5</a>
+            <b set-method="insertUBLExtensionTypeEbiz">ublExtensions.additionalPropertyType</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="PayableAmountType">
+            <a get-method="buildTotalVenta">totalVenta</a>
+            <b>legalMonetaryTotal.payableAmount</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="AllowanceTotalAmountType">
+            <a get-method="buildDescuentoGlobal">descuentosGlobales</a>
+            <b>legalMonetaryTotal.allowanceTotalAmount</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToUBLExtensionTypeConverter"
+               custom-converter-param="SubTotalVenta">
+            <a get-method="buildSubTotal">subTotal</a>
+            <b set-method="insertUBLExtensionMoneratyType">ublExtensions.additionalMonetaryTotal</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="ChargeTotalAmountType">
+            <a get-method="buildTotalOtrosCargos">totalOtrosCargos</a>
+            <b>legalMonetaryTotal.chargeTotalAmount</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTaxTotalTypeConverter"
+               custom-converter-param="TotalIsc">
+            <a get-method="buildTotalIsc">totalIsc</a>
+
+            <b set-method="insertTaxTotalType">taxTotal</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTaxTotalTypeConverter"
+               custom-converter-param="TotalOtrosTributos">
+            <a get-method="buildTotalOtrosTributos">totalOtrosTributos</a>
+
+            <b set-method="insertTaxTotalType">taxTotal</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTaxTotalTypeConverter"
+               custom-converter-param="TotalIgv">
+            <a get-method="buildTotalIgv">totalIgv</a>
+
+            <b set-method="insertTaxTotalType">taxTotal</b>
+        </field>
+
+    </mapping>
+
+
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.tools.edocu.EDocumentoItem</class-a>
+        <class-b>oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.InvoiceLineType</class-b>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>numeroOrdenItem</a>
+            <b>id</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTextTypeConverter"
+               custom-converter-param="DescriptionType">
+            <a>descripcion</a>
+            <b set-method="insertDescriptionTypeList">item.description</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemIdentificationTypeConverter">
+            <a>codigoProducto</a>
+            <b set-method="insertSellersItemIdentification">item.sellersItemIdentification</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToInvoiceQuantityTypeConverter"
+               custom-converter-param="value">
+            <a>cantidad</a>
+            <b>invoicedQuantity</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToInvoiceQuantityTypeConverter"
+               custom-converter-param="id">
+            <a>unidadMedida</a>
+            <b>invoicedQuantity</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a get-method="buildUnidadComercialCodigo">unidadMedidaComercial</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPriceTypeConverter"
+                >
+            <a get-method="buildImporteUnitarioConImpuesto">importeUnitarioConImpuesto</a>
+            <b set-method="insertPriceType">pricingReference.alternativeConditionPrice</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPriceReferenceTypeConverter"
+                >
+            <a get-method="buildImporteReferencial">importeReferencial</a>
+            <b set-method="insertPriceType">pricingReference.alternativeConditionPrice</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTaxTotalTypeConverter"
+               custom-converter-param="ImporteIgv">
+            <a get-method="buildImporteIgv">importeIgv</a>
+            <b set-method="insertTaxTotal">taxTotal</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTaxTotalTypeConverter"
+               custom-converter-param="ImporteIsc">
+            <a get-method="buildImporteIsc">importeIsc</a>
+            <b set-method="insertTaxTotal">taxTotal</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="ImporteUnitarioSinImpuesto">
+            <a get-method="buildImporteUnitarioSinImpuesto">importeUnitarioSinImpuesto</a>
+            <b>price.priceAmount</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="ImporteTotalSinImpuesto">
+            <a get-method="buildImporteTotalSinImpuesto">importeTotalSinImpuesto</a>
+            <b>lineExtensionAmount</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="AmountType">
+            <a get-method="buildImporteDescuento">importeDescuento</a>
+            <b set-method="insertAllowanceDescuento">allowanceCharge</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="AmountType">
+            <a get-method="buildImporteCargo">importeCargo</a>
+            <b set-method="insertAllowanceCargo">allowanceCharge</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar500_1</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar500_2</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar500_3</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar500_4</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar500_5</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar100_1</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar100_2</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar100_3</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar100_4</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar100_5</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar100_6</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar100_7</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar100_8</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar100_9</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar100_10</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar250_1</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar250_2</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar250_3</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar250_4</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar250_5</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar250_6</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar250_7</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar250_8</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar250_9</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar250_10</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar40_1</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar40_2</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar40_3</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar40_4</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar40_5</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar40_6</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar40_7</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar40_8</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar40_9</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemPropertyTypeConverter">
+            <a>auxiliar40_10</a>
+            <b set-method="insertAdditionalItemProperty">item.additionalItemProperty</b>
+        </field>
+
+    </mapping>
+
+
+    <mapping  type="one-way">
+        <class-a>oasis.names.specification.ubl.schema.xsd.invoice_2.InvoiceType</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.EDocumento</class-b>
+        <field>
+            <a>invoiceLine</a>
+            <b>items</b>
+            <a-hint>oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.InvoiceLineType</a-hint>
+            <b-hint>com.axteroid.ose.server.tools.edocu.EDocumentoItem</b-hint>
+        </field>
+        <field>
+            <a>customizationID.value</a>
+            <b>version</b>
+        </field>
+        <field>
+            <a>ublVersionID.value</a>
+            <b>versionUBL</b>
+        </field>
+        <field>
+            <a>id.value</a>
+            <b>serieNumero</b>
+        </field>
+        <field>
+            <a>issueDate.value</a>
+            <b>fechaEmision</b>
+        </field>
+        <field>
+            <a>paymentMeans[0].paymentDueDate.value</a>
+            <b>fechaVencimiento</b>
+        </field>
+        <field>
+            <a>accountingSupplierParty.party.partyLegalEntity[0].registrationName.value</a>
+            <b>razonSocialEmisor</b>
+        </field>
+        <field>
+            <a>accountingSupplierParty.party.partyName[0].name.value</a>
+            <b>nombreComercialEmisor</b>
+        </field>
+        <field>
+            <a>accountingSupplierParty.party.postalAddress.id.value</a>
+            <b>ubigeoEmisor</b>
+        </field>
+        <field>
+            <a>accountingSupplierParty.party.postalAddress.streetName.value</a>
+            <b>direccionEmisor</b>
+        </field>
+
+        <field>
+            <a>accountingSupplierParty.party.postalAddress.citySubdivisionName.value</a>
+            <b>urbanizacion</b>
+        </field>
+
+        <field>
+            <a>accountingSupplierParty.party.postalAddress.cityName.value</a>
+            <b>provinciaEmisor</b>
+        </field>
+
+        <field>
+            <a>accountingSupplierParty.party.postalAddress.countrySubentity.value</a>
+            <b>departamentoEmisor</b>
+        </field>
+        <field>
+            <a>accountingSupplierParty.party.postalAddress.district.value</a>
+            <b>distritoEmisor</b>
+        </field>
+
+        <field>
+            <a>accountingSupplierParty.party.postalAddress.country.identificationCode.value</a>
+            <b>paisEmisor</b>
+        </field>
+
+
+        <field>
+            <a>accountingSupplierParty.customerAssignedAccountID.value</a>
+            <b>numeroDocumentoEmisor</b>
+        </field>
+        <field>
+            <a>accountingSupplierParty.additionalAccountID[0].value</a>
+            <b>tipoDocumentoEmisor</b>
+        </field>
+        <field>
+            <a>invoiceTypeCode.value</a>
+            <b>tipoDocumento</b>
+        </field>
+        <field>
+            <a>accountingCustomerParty.customerAssignedAccountID.value</a>
+            <b>numeroDocumentoAdquiriente</b>
+        </field>
+        <field>
+            <a>accountingCustomerParty.additionalAccountID[0].value</a>
+            <b>tipoDocumentoAdquiriente</b>
+        </field>
+        <field>
+            <a>accountingCustomerParty.party.partyLegalEntity[0].registrationName.value</a>
+            <b>razonSocialAdquiriente</b>
+        </field>  		 		
+  		<field>
+            <a>accountingCustomerParty.party.physicalLocation.description.value</a>
+            <b>lugarDestino</b>
+        </field> 		
+        <field>
+            <a>sellerSupplierParty.party.postalAddress.streetName.value</a>
+            <b>direccionLugarEntrega</b>
+        </field>  
+        <field>
+            <a>sellerSupplierParty.party.postalAddress.citySubdivisionName.value</a>
+            <b>urbanizacionLugarEntrega</b>
+        </field>  
+        <field>
+            <a>sellerSupplierParty.party.postalAddress.cityName.value</a>
+            <b>provinciaLugarEntrega</b>
+        </field>     
+        <field>
+            <a>sellerSupplierParty.party.postalAddress.countrySubentity.value</a>
+            <b>departamentoLugarEntrega</b>
+        </field> 
+        <field>
+            <a>sellerSupplierParty.party.postalAddress.district.value</a>
+            <b>distritoLugarEntrega</b>
+        </field> 
+        <field>
+            <a>sellerSupplierParty.party.postalAddress.country.identificationCode.value</a>
+            <b>paisLugarEntrega</b>
+        </field>          
+        <field>
+            <a>accountingCustomerParty.party.postalAddress.countrySubentity.value</a>
+            <b>departamentoAdquiriente</b>
+        </field>
+        <field>
+            <a>accountingCustomerParty.party.postalAddress.district.value</a>
+            <b>distritoAdquiriente</b>
+        </field>
+
+        <field>
+            <a>accountingCustomerParty.party.postalAddress.country.identificationCode.value</a>
+            <b>paisAdquiriente</b>
+        </field>
+
+        <field>
+            <a>accountingCustomerParty.party.postalAddress.citySubdivisionName.value</a>
+            <b>urbanizacionAdquiriente</b>
+        </field>
+        <field>
+            <a>accountingCustomerParty.party.postalAddress.id.value</a>
+            <b>ubigeoAdquiriente</b>
+        </field>
+
+        <field>
+            <a>accountingCustomerParty.party.postalAddress.streetName.value</a>
+            <b>direccionAdquiriente</b>
+        </field>
+
+        <field>
+            <a>accountingCustomerParty.party.postalAddress.cityName.value</a>
+            <b>provinciaAdquiriente</b>
+        </field>
+
+        <field>
+            <a>documentCurrencyCode.value</a>
+            <b>tipoMoneda</b>
+        </field>
+        <field>
+            <a>legalMonetaryTotal.prepaidAmount.value</a>
+            <b>totalDocumentoAnticipo</b>
+        </field>
+        <field>
+            <a>legalMonetaryTotal.payableAmount.value</a>
+            <b>totalVenta</b>
+        </field>
+        <field>
+            <a>legalMonetaryTotal.allowanceTotalAmount.value</a>
+            <b>descuentosGlobales</b>
+        </field>
+        <field>
+            <a>legalMonetaryTotal.chargeTotalAmount.value</a>
+            <b>totalOtrosCargos</b>
+        </field>
+        <field>
+            <a>orderReference.id.value</a>
+            <b>ordenCompra</b>
+        </field>
+    </mapping>
+
+    <mapping  type="one-way">
+        <class-a>oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.InvoiceLineType</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.EDocumentoItem</class-b>
+        <field>
+            <a>id.value</a>
+            <b>numeroOrdenItem</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.ListToStringTypeConverter">
+            <a>item.description</a>
+            <b>descripcion</b>
+        </field>
+        <field>
+            <a>item.sellersItemIdentification.id.value</a>
+            <b>codigoProducto</b>
+        </field>
+        <field>
+            <a>invoicedQuantity.value</a>
+            <b>cantidad</b>
+        </field>
+        <field>
+            <a>invoicedQuantity.unitCode</a>
+            <b>unidadMedida</b>
+        </field>
+        <field>
+            <a>pricingReference.alternativeConditionPrice[0].PriceAmount.value</a>
+            <b>importeUnitarioConImpuesto</b>
+        </field>
+        <field>
+            <a>lineExtensionAmount.value</a>
+            <b>importeTotalSinImpuesto</b>
+        </field>
+        <field>
+            <a>price.priceAmount.value</a>
+            <b>importeUnitarioSinImpuesto</b>
+        </field>
+     </mapping>
+
+
+</mappings>

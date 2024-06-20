@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration>
+	<property name="LOGS" value="/opt/axteroid-ose/log" />
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder>
+			<pattern>[%d{ISO8601}][%X{FILE}] [%p] [%-4C:%L] |%m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.err</target>
+        <encoder>
+			<pattern>[%d{ISO8601}][%X{FILE}] [%p] [%-4C:%L] |%m%n</pattern>
+        </encoder>
+    </appender> 
+ 	<appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <file>${LOGS}/Ax-OSE-Server.log</file>
+	    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+	    	<pattern>[%d{ISO8601}][%X{FILE}] [%p] [%-4C:%L] |%m%n</pattern> 
+<!-- 			<pattern>[%d{ISO8601}][%X{FILE}] [%p] [%-4C:%L] |%m%n</pattern> -->
+	    </encoder>	
+	    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+	        <fileNamePattern>${LOGS}/Ax-OSE-Server.log.%d{yyyy-MM-dd}_%i</fileNamePattern>
+	        <maxFileSize>10000MB</maxFileSize>
+	        <maxHistory>1</maxHistory>
+	        <totalSizeCap>10000MB</totalSizeCap>
+	        <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10000MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+	    </rollingPolicy>	        
+	</appender>   
+ 	<logger name="com.axteroid.ose.server" level="trace" additivity="false">
+        <appender-ref ref="RollingFile" />
+        <appender-ref ref="Console" />
+    </logger>  
+    <logger name="org.jboss" level="info" />
+	<logger name="org.jboss.resteasy" level="warn" />
+    
+    <root level="info">
+    	<appender-ref ref="RollingFile" />
+        <appender-ref ref="Console"/>
+    </root> 
+</configuration>

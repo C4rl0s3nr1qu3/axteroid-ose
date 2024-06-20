@@ -1,0 +1,188 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://invoke.servicessoap.server.ose.axteroid.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="oseServer" targetNamespace="http://invoke.servicessoap.server.ose.axteroid.com/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://invoke.servicessoap.server.ose.axteroid.com/" elementFormDefault="unqualified" targetNamespace="http://invoke.servicessoap.server.ose.axteroid.com/" version="1.0">
+<xs:element name="getStatus" type="tns:getStatus"/>
+<xs:element name="getStatusResponse" type="tns:getStatusResponse"/>
+<xs:element name="getStatusCdr" type="tns:getStatusCdr"/>
+<xs:element name="getStatusCdrResponse" type="tns:getStatusCdrResponse"/>
+<xs:element name="sendBill" type="tns:sendBill"/>
+<xs:element name="sendBillResponse" type="tns:sendBillResponse"/>
+<xs:element name="sendSummary" type="tns:sendSummary"/>
+<xs:element name="sendSummaryResponse" type="tns:sendSummaryResponse"/>
+<xs:element name="sendPack" type="tns:sendPack"/>
+<xs:element name="sendPackResponse" type="tns:sendPackResponse"/>
+<xs:complexType name="getStatus">
+<xs:sequence>
+<xs:element minOccurs="0" name="ticket" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getStatusResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:statusResponse"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="statusResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="content" type="xs:base64Binary"/>
+<xs:element minOccurs="0" name="statusCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getStatusCdr">
+<xs:sequence>
+<xs:element minOccurs="0" name="statusCdr" type="tns:StatusCdr"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="StatusCdr">
+<xs:sequence>
+<xs:element minOccurs="0" name="numeroComprobante" type="xs:string"/>
+<xs:element minOccurs="0" name="rucComprobante" type="xs:string"/>
+<xs:element minOccurs="0" name="serieComprobante" type="xs:string"/>
+<xs:element minOccurs="0" name="tipoComprobante" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getStatusCdrResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:base64Binary"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sendBill">
+<xs:sequence>
+<xs:element minOccurs="0" name="fileName" type="xs:string"/>
+<xs:element minOccurs="0" name="contentFile" type="xs:base64Binary"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sendBillResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:base64Binary"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sendSummary">
+<xs:sequence>
+<xs:element minOccurs="0" name="fileName" type="xs:string"/>
+<xs:element minOccurs="0" name="contentFile" type="xs:base64Binary"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sendSummaryResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sendPack">
+<xs:sequence>
+<xs:element minOccurs="0" name="fileName" type="xs:string"/>
+<xs:element minOccurs="0" name="contentFile" type="xs:base64Binary"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="sendPackResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="getStatus">
+<wsdl:part element="tns:getStatus" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getStatusResponse">
+<wsdl:part element="tns:getStatusResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getStatusCdr">
+<wsdl:part element="tns:getStatusCdr" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getStatusCdrResponse">
+<wsdl:part element="tns:getStatusCdrResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="sendBill">
+<wsdl:part element="tns:sendBill" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="sendBillResponse">
+<wsdl:part element="tns:sendBillResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="sendSummary">
+<wsdl:part element="tns:sendSummary" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="sendSummaryResponse">
+<wsdl:part element="tns:sendSummaryResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="sendPack">
+<wsdl:part element="tns:sendPack" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="sendPackResponse">
+<wsdl:part element="tns:sendPackResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:portType name="OseServer">
+<wsdl:operation name="getStatus">
+<wsdl:input message="tns:getStatus" name="getStatus"></wsdl:input>
+<wsdl:output message="tns:getStatusResponse" name="getStatusResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getStatusCdr">
+<wsdl:input message="tns:getStatusCdr" name="getStatusCdr"></wsdl:input>
+<wsdl:output message="tns:getStatusCdrResponse" name="getStatusCdrResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="sendBill">
+<wsdl:input message="tns:sendBill" name="sendBill"></wsdl:input>
+<wsdl:output message="tns:sendBillResponse" name="sendBillResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="sendSummary">
+<wsdl:input message="tns:sendSummary" name="sendSummary"></wsdl:input>
+<wsdl:output message="tns:sendSummaryResponse" name="sendSummaryResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="sendPack">
+<wsdl:input message="tns:sendPack" name="sendPack"></wsdl:input>
+<wsdl:output message="tns:sendPackResponse" name="sendPackResponse"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="oseServerSoapBinding" type="tns:OseServer">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="getStatus">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getStatus">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getStatusResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getStatusCdr">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getStatusCdr">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getStatusCdrResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="sendBill">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="sendBill">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="sendBillResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="sendSummary">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="sendSummary">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="sendSummaryResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="sendPack">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="sendPack">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="sendPackResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="OseServer">
+<wsdl:port binding="tns:oseServerSoapBinding" name="OseServerPort">
+<soap:address location="http://localhost:6080/ol-ti-itcpe/billService"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

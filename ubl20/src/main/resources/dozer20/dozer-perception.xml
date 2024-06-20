@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+          xmlns='http://dozer.sourceforge.net'
+          xsi:schemaLocation='http://dozer.sourceforge.net
+                   http://dozer.sourceforge.net/schema/beanmapping.xsd'>
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.tools.edocu.EPercepcionDocumento</class-a>
+        <class-b>sunat.names.specification.ubl.peru.schema.xsd.perception_1.PerceptionType</class-b>
+        <field>
+            <a>items</a>
+            <b>SunatPerceptionDocumentReference</b>
+            <a-hint>com.axteroid.ose.server.tools.edocu.EPercepcionDocumentoItem</a-hint>
+            <b-hint>oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.SunatPerceptionDocumentReferenceType</b-hint>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="UBLVersionIDType">
+            <a>versionUBL</a>
+            <b>ublVersionID</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="CustomizationIDType">
+            <a>version</a>
+            <b>customizationID</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToSignTypeConverter"
+               custom-converter-param="NameType">
+            <a>rucRazonSocialEmisor</a>
+            <b set-method="insertSignatureType">signature</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>serieNumeroPercepcion</a>
+            <b>id</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.DateToXmlGregorianCalendarConverter">
+            <a>fechaEmision</a>
+            <b>issueDate</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPartyIdentificationType">
+            <a get-method="buildEmisor">numeroDocumentoEmisor</a>
+            <b>agentParty</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+        	custom-converter-param="NameType">
+            <a>nombreComercialEmisor</a>
+            <b set-method="insertNameType">agentParty.partyName</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>ubigeoEmisor</a>
+            <b>agentParty.postalAddress.id</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="StreetNameType">
+            <a>direccionEmisor</a>
+            <b>agentParty.postalAddress.streetName</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="CitySubdivisionNameType">
+            <a>urbanizacionEmisor</a>
+            <b>agentParty.postalAddress.citySubdivisionName</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="CityNameType">
+            <a>provinciaEmisor</a>
+            <b>agentParty.postalAddress.cityName</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTextTypeConverter"
+               custom-converter-param="CountrySubentityType">
+            <a>departamentoEmisor</a>
+            <b>agentParty.postalAddress.countrySubentity</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTextTypeConverter"
+               custom-converter-param="DistrictType">
+            <a>distritoEmisor</a>
+            <b>agentParty.postalAddress.district</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCountryTypeConverter">
+            <a>codigoPaisEmisor</a>
+            <b>agentParty.postalAddress.country</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPartyLegalEntityTypeConverter"
+               custom-converter-param="RegistrationNameType">
+            <a>razonSocialEmisor</a>
+            <b set-method="insertPartyLegalEntity">agentParty.partyLegalEntity</b>
+        </field>        
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPartyIdentificationType">
+            <a get-method="buildCliente">numeroDocumentoCliente</a>
+            <b>receiverParty</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+        	custom-converter-param="NameType">
+            <a>nombreComercialCliente</a>
+            <b set-method="insertNameType">receiverParty.partyName</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>ubigeoCliente</a>
+            <b>receiverParty.postalAddress.id</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="StreetNameType">
+            <a>direccionCliente</a>
+            <b>receiverParty.postalAddress.streetName</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="CitySubdivisionNameType">
+            <a>urbanizacionCliente</a>
+            <b>receiverParty.postalAddress.citySubdivisionName</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="CityNameType">
+            <a>provinciaCliente</a>
+            <b>receiverParty.postalAddress.cityName</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTextTypeConverter"
+               custom-converter-param="CountrySubentityType">
+            <a>departamentoCliente</a>
+            <b>receiverParty.postalAddress.countrySubentity</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTextTypeConverter"
+               custom-converter-param="DistrictType">
+            <a>distritoCliente</a>
+            <b>receiverParty.postalAddress.district</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCountryTypeConverter">
+            <a>codigoPaisCliente</a>
+            <b>receiverParty.postalAddress.country</b>
+        </field>  
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPartyLegalEntityTypeConverter"
+               custom-converter-param="RegistrationNameType">
+            <a>razonSocialCliente</a>
+            <b set-method="insertPartyLegalEntity">receiverParty.partyLegalEntity</b>
+        </field>         
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCodeTypeConverter"
+               custom-converter-param="SunatPerceptionSystemCodeType">
+            <a>regimenPercepcion</a>
+            <b>sunatPerceptionSystemCode</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPercentTypeConverter"
+        		custom-converter-param="SunatPerceptionPercentType">        
+            <a>tasaPercepcion</a>
+            <b>sunatPerceptionPercent</b>
+        </field>                      
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTextTypeConverter"
+               custom-converter-param="NoteType">
+            <a>observaciones</a>
+            <b set-method="insertNoteType">note</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="TotalInvoiceAmountType">
+            <a get-method="buildTotalPercibido">importeTotalPercibido</a>
+            <b>totalInvoiceAmount</b>
+        </field>
+        
+         <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="PaidAmountType">
+            <a get-method="buildTotalCobrado">importeTotalCobrado</a>
+            <b>sunatTotalCashed</b>
+        </field>         
+
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.tools.edocu.EPercepcionDocumentoItem</class-a>
+        <class-b>oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.SunatPerceptionDocumentReferenceType
+        </class-b>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+        		custom-converter-param="SunatPerceptionDocumentReferenceType">
+            <a get-method="buildDocumentoRelacionado">numeroDocumentoRelacionado</a>
+            <b>id</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.DateToXmlGregorianCalendarConverter">
+            <a>fechaEmisionDocumentoRelacionado</a>
+            <b>issueDate</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="TotalInvoiceAmountType">
+            <a get-method="buildTotalRelacionado">importeTotalDocumentoRelacionado</a>
+            <b>totalInvoiceAmount</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.DateToXmlGregorianCalendarConverter"
+        		custom-converter-param="paidDate">
+            <a>fechaCobro</a>
+            <b>payment.paidDate</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>numeroCobro</a>
+            <b>payment.id</b>
+        </field>                
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="PaidAmountType">
+            <a get-method="buildTotalCobro">importeCobro</a>
+            <b>payment.paidAmount</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="SunatPerceptionAmountType">
+            <a get-method="buildTotalPercibido">importePercibido</a>
+            <b>sunatPerceptionInformation.sunatPerceptionAmount</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.DateToXmlGregorianCalendarConverter"
+        		custom-converter-param="sunatPerceptionDate">
+            <a>fechaPercepcion</a>
+            <b>sunatPerceptionInformation.sunatPerceptionDate</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="SunatNetTotalCashedType">
+            <a get-method="buildTotalCobrar">importeTotalCobrar</a>
+            <b>sunatPerceptionInformation.sunatNetTotalCashed</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCodeTypeConverter"
+               custom-converter-param="SourceCurrencyCodeType">
+            <a>monedaReferenciaTipoCambio</a>
+            <b set-method="insertSourceCurrencyCodeType">sunatPerceptionInformation</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCodeTypeConverter"
+               custom-converter-param="TargetCurrencyCodeType">
+            <a>monedaObjetivoTasaCambio</a>
+            <b set-method="insertTargetCurrencyCodeType">sunatPerceptionInformation</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCalculationRateTypeConverter">
+            <a>factorTipoCambioMoneda</a>
+            <b set-method="insertCalculationRateType">sunatPerceptionInformation</b>
+        </field>        
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.DateToXmlGregorianCalendarConverter"
+        		custom-converter-param="Date">
+            <a>fechaCambio</a>
+            <b set-method="insertDateType">sunatPerceptionInformation</b>
+        </field>
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>sunat.names.specification.ubl.peru.schema.xsd.perception_1.PerceptionType</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.EPercepcionDocumento</class-b>
+        <field>
+            <a>SunatPerceptionDocumentReference</a>
+            <b>items</b>
+            <a-hint>oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.SunatPerceptionDocumentReferenceType</a-hint>
+            <b-hint>com.axteroid.ose.server.tools.edocu.EPercepcionDocumentoItem</b-hint>
+        </field>
+        <field>
+            <a>ublVersionID.value</a>
+            <b>versionUBL</b>
+        </field>
+        <field>
+            <a>customizationID.value</a>
+            <b>version</b>
+        </field>
+        <field>
+            <a>id.value</a>
+            <b>serieNumeroPercepcion</b>
+        </field>
+        <field>
+            <a>issueDate.value</a>
+            <b>fechaEmision</b>
+        </field>
+        <field>
+            <a>agentParty.partyIdentification[0].id.schemeID</a>
+            <b>tipoDocumentoEmisor</b>
+        </field>                
+        <field>
+            <a>agentParty.partyIdentification[0].id.value</a>
+            <b>numeroDocumentoEmisor</b>
+        </field>
+        <field>
+            <a>agentParty.partyName[0].name.value</a>
+            <b>nombreComercialEmisor</b>
+        </field>
+        <field>
+            <a>agentParty.postalAddress.id.value</a>
+            <b>ubigeoEmisor</b>
+        </field>
+        <field>
+            <a>agentParty.postalAddress.streetName.value</a>
+            <b>direccionEmisor</b>
+        </field>
+        <field>
+            <a>agentParty.postalAddress.citySubdivisionName.value</a>
+            <b>urbanizacionEmisor</b>
+        </field>
+        <field>
+            <a>agentParty.postalAddress.cityName.value</a>
+            <b>provinciaEmisor</b>
+        </field>
+        <field>
+            <a>agentParty.postalAddress.countrySubentity.value</a>
+            <b>departamentoEmisor</b>
+        </field>
+        <field>
+            <a>agentParty.postalAddress.district.value</a>
+            <b>distritoEmisor</b>
+        </field>
+        <field>
+            <a>agentParty.postalAddress.country.identificationCode.value</a>
+            <b>codigoPaisEmisor</b>
+        </field>
+        <field>
+            <a>agentParty.partyLegalEntity[0].registrationName.value</a>
+            <b>razonSocialEmisor</b>
+        </field>        
+        <field>
+            <a>receiverParty.partyIdentification[0].id.value</a>
+            <b>numeroDocumentoCliente</b>
+        </field>
+        <field>
+            <a>receiverParty.partyName[0].name.value</a>
+            <b>nombreComercialCliente</b>
+        </field>
+        <field>
+            <a>receiverParty.postalAddress.id.value</a>
+            <b>ubigeoEmisor</b>
+        </field>
+        <field>
+            <a>receiverParty.postalAddress.streetName.value</a>
+            <b>direccionCliente</b>
+        </field>
+        <field>
+            <a>receiverParty.postalAddress.citySubdivisionName.value</a>
+            <b>urbanizacionEmisor</b>
+        </field>
+        <field>
+            <a>receiverParty.postalAddress.cityName.value</a>
+            <b>provinciaEmisor</b>
+        </field>
+        <field>
+            <a>receiverParty.postalAddress.countrySubentity.value</a>
+            <b>departamentoEmisor</b>
+        </field>
+        <field>
+            <a>receiverParty.postalAddress.district.value</a>
+            <b>distritoEmisor</b>
+        </field>
+        <field>
+            <a>receiverParty.postalAddress.country.identificationCode.value</a>
+            <b>codigoPaisEmisor</b>
+        </field>
+        <!-- Se mapea razonsocialcliente -->
+        <field>
+            <a>receiverParty.partyLegalEntity[0].registrationName.value</a>
+            <b>razonSocialCliente</b>
+        </field> 
+        <field>
+            <a>sunatPerceptionSystemCode.value</a>
+            <b>regimenPercepcion</b>
+        </field>
+        <field>
+        	<a>sunatPerceptionPercent.value</a>
+        	<b>tasaPercepcion</b>
+        </field>
+        <!-- Mapeo reciente -->
+        <field>
+            <a>receiverParty.partyIdentification[0].id.schemeID</a>
+            <b>tipoDocumentoCliente</b>
+        </field>
+        <field>
+        	<a>note[0].value</a>
+        	<b>observaciones</b>
+        </field>
+		<field>
+        	<a>totalInvoiceAmount.value</a>
+        	<b>importeTotalPercibido</b>
+        </field>
+        <!-- Moneda mapeada 2016-06-15 -->
+        <field >
+        	<a>totalInvoiceAmount.currencyID</a>
+        	<b>tipoMonedaTotalPercibido</b>
+        </field>  
+		<field>
+        	<a>sunatTotalCashed.value</a>
+        	<b>importeTotalCobrado</b>
+        </field>     
+        <!-- Moneda mapeada 2016-06-13 -->
+        <field>
+        	<a>sunatTotalCashed.currencyID</a>
+        	<b>tipoMonedaTotalCobrado</b>
+        </field>                                                        
+    </mapping>
+    
+    <mapping type="one-way">
+        <class-a>oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.SunatPerceptionDocumentReferenceType</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.EPercepcionDocumentoItem</class-b>
+        <field>
+            <a>id.schemeID</a>
+            <b>tipoDocumentoRelacionado</b>
+        </field>        
+        <field>
+            <a>id.value</a>
+            <b>numeroDocumentoRelacionado</b>
+        </field>
+        <field>
+        	<a>issueDate.value</a>
+        	<b>fechaEmisionDocumentoRelacionado</b>
+        </field>
+        <field>
+        	<a>totalInvoiceAmount.value</a>
+        	<b>importeTotalDocumentoRelacionado</b>
+        </field>
+        <field>
+        	<a>totalInvoiceAmount.currencyID</a>
+        	<b>tipoMonedaDocumentoRelacionado</b>
+        </field>        
+        <field>
+        	<a>payment.paidDate.value</a>
+        	<b>fechaCobro</b>
+        </field>
+        <field>
+        	<a>payment.id.value</a>
+        	<b>numeroCobro</b>
+        </field>
+        <field>
+        	<a>payment.paidAmount.value</a>
+        	<b>importeCobro</b>
+        </field>
+         <!-- Moneda mapeada 2016-06-15 -->
+        <field>
+        	<a>payment.paidAmount.currencyID</a>
+        	<b>monedaCobro</b>
+        </field>
+        <field>
+        	<a>sunatPerceptionInformation.sunatPerceptionAmount.value</a>
+        	<b>importePercibido</b>
+        </field>
+        <!-- Moneda mapeada 2016-06-15 -->
+	    <field>
+	        <a>sunatPerceptionInformation.sunatPerceptionAmount.currencyID</a>
+	        <b>monedaImportePercibido</b>
+	    </field>
+        <field>
+        	<a>sunatPerceptionInformation.sunatPerceptionDate.value</a>
+        	<b>fechaPercepcion</b>
+        </field>
+        <field>
+        	<a>sunatPerceptionInformation.sunatNetTotalCashed.value</a>
+        	<b>importeTotalCobrar</b>
+        </field>
+        <!-- Moneda mapeada 2016-06-15 -->
+        <field>
+        	<a>sunatPerceptionInformation.sunatNetTotalCashed.currencyID</a>
+        	<b>monedaMontoTotalCobrar</b>
+        </field>
+        <field>
+        	<a>sunatPerceptionInformation.exchangeRate.sourceCurrencyCode.value</a>
+        	<b>monedaReferenciaTipoCambio</b>
+        </field>
+        <field>
+        	<a>sunatPerceptionInformation.exchangeRate.targetCurrencyCode.value</a>
+        	<b>monedaObjetivoTasaCambio</b>
+        </field>
+        <field>
+        	<a>sunatPerceptionInformation.exchangeRate.calculationRate.value</a>
+        	<b>factorTipoCambioMoneda</b>
+        </field>
+        <field>
+        	<a>sunatPerceptionInformation.exchangeRate.date.value</a>
+        	<b>fechaCambio</b>
+        </field>
+    </mapping>
+</mappings>

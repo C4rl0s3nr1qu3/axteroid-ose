@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+          xmlns='http://dozer.sourceforge.net'
+          xsi:schemaLocation='http://dozer.sourceforge.net
+                   http://dozer.sourceforge.net/schema/beanmapping.xsd'>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.request.SignOneCmd</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.SignAction</class-b>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.ObjectToListTypeConverter">
+            <a>documento</a>
+            <b>documentos</b>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.request.SignOneSummaryCmd</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.SignAction</class-b>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.ObjectToListTypeConverter">
+            <a>documento</a>
+            <b>documentos</b>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.request.SunatOnLineCmd</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.SignAction</class-b>
+        <field copy-by-reference="true">
+            <a>documentos</a>
+            <b>documentos</b>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.request.SunatOnLineSummaryCmd</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.SignAction</class-b>
+        <field copy-by-reference="true">
+            <a>documentos</a>
+            <b>documentos</b>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.request.ValidateOnLineCmd</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.SignAction</class-b>
+        <field copy-by-reference="true">
+            <a>documentos</a>
+            <b>documentos</b>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.request.SignOnLineCmd</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.SignAction</class-b>
+        <field copy-by-reference="true">
+            <a>documentos</a>
+            <b>documentos</b>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.request.SignOnLineDespatchCmd</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.SignAction</class-b>
+        <field copy-by-reference="true">
+            <a>documentos</a>
+            <b>documentos</b>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.request.SignOnLineRetentionCmd</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.SignAction</class-b>
+        <field copy-by-reference="true">
+            <a>documentos</a>
+            <b>documentos</b>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.request.SignOnLinePerceptionCmd</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.SignAction</class-b>
+        <field copy-by-reference="true">
+            <a>documentos</a>
+            <b>documentos</b>
+        </field>
+    </mapping>         
+    <mapping>    
+        <class-a>com.axteroid.ose.server.ubl20.gateway.request.SignOnLineSummaryCmd</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.SignAction</class-b>
+        <field copy-by-reference="true">
+            <a>documentos</a>
+            <b>documentos</b>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.request.SignOnLineReversionCmd</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.SignAction</class-b>
+        <field copy-by-reference="true">
+            <a>documentos</a>
+            <b>documentos</b>
+        </field>
+    </mapping>        
+    <mapping>    
+        <class-a>com.axteroid.ose.server.ubl20.gateway.request.ValidateOnLineSummaryCmd</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.SignAction</class-b>
+        <field copy-by-reference="true">
+            <a>documentos</a>
+            <b>documentos</b>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.request.SignBatchCmd</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.SignAction</class-b>
+    </mapping>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.ws.response.EDocumentResult</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.response.DocumentResult</class-b>
+        <field >
+            <a>fechaEmision</a>
+            <b>emisionTime</b>
+        </field>
+    </mapping>
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.ubl20.gateway.batch.EDocumentoCliente</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.EDocumento</class-b>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIntegerTypeConverter">
+            <a>inHabilitado</a>
+            <b>inHabilitado</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToSerieNumeroTypeConverter">
+            <a>serieNumero</a>
+            <b>serieNumero</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToSerieNumeroTypeConverter">
+            <a>serieNumeroAfectado</a>
+            <b>serieNumeroAfectado</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToByteTypeConverter">
+            <a>adjunto_1</a>
+            <b>adjunto_1</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToByteTypeConverter">
+            <a>adjunto_2</a>
+            <b>adjunto_2</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToByteTypeConverter">
+            <a>adjunto_3</a>
+            <b>adjunto_3</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToByteTypeConverter">
+            <a>adjunto_4</a>
+            <b>adjunto_4</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToByteTypeConverter">
+            <a>adjunto_5</a>
+            <b>adjunto_5</b>
+        </field>
+        <field>
+            <a>items</a>
+            <b>items</b>
+            <a-hint>com.axteroid.ose.server.ubl20.gateway.batch.EDocumentoItemCliente</a-hint>
+            <b-hint>com.axteroid.ose.server.tools.edocu.EDocumentoItem</b-hint>
+        </field>
+    </mapping>
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.tools.edocu.EDocumento</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.batch.EDocumentoCliente</class-b>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.IntegerToStringTypeConverter">
+            <a>inHabilitado</a>
+            <b>inHabilitado</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.ByteToStringTypeConverter">
+            <a>adjunto_1</a>
+            <b>adjunto_1</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.ByteToStringTypeConverter">
+            <a>adjunto_2</a>
+            <b>adjunto_2</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.ByteToStringTypeConverter">
+            <a>adjunto_3</a>
+            <b>adjunto_3</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.ByteToStringTypeConverter">
+            <a>adjunto_4</a>
+            <b>adjunto_4</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.ByteToStringTypeConverter">
+            <a>adjunto_5</a>
+            <b>adjunto_5</b>
+        </field>
+        <field>
+            <a>items</a>
+            <b>items</b>
+            <a-hint>com.axteroid.ose.server.tools.edocu.EDocumentoItem</a-hint>
+            <b-hint>com.axteroid.ose.server.ubl20.gateway.batch.EDocumentoItemCliente</b-hint>
+        </field>
+    </mapping>        
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.ubl20.gateway.batch.EGuiaCliente</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.EGuiaDocumento</class-b>
+        <field>
+            <a>inHabilitado</a>
+            <b>inHabilitado</b>
+        </field>
+        <field>
+            <a>serieNumeroGuia</a>
+            <b>serieNumeroGuia</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToByteTypeConverter">
+            <a>adjunto_1</a>
+            <b>adjunto_1</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToByteTypeConverter">
+            <a>adjunto_2</a>
+            <b>adjunto_2</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToByteTypeConverter">
+            <a>adjunto_3</a>
+            <b>adjunto_3</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToByteTypeConverter">
+            <a>adjunto_4</a>
+            <b>adjunto_4</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToByteTypeConverter">
+            <a>adjunto_5</a>
+            <b>adjunto_5</b>
+        </field>
+        <field>
+            <a>items</a>
+            <b>items</b>
+            <a-hint>com.axteroid.ose.server.ubl20.gateway.batch.EGuiaItemCliente</a-hint>
+            <b-hint>com.axteroid.ose.server.tools.edocu.EGuiaDocumentoItem</b-hint>
+        </field>
+    </mapping>
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.tools.edocu.EGuiaDocumento</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.batch.EGuiaCliente</class-b>
+        <field>
+            <a>inHabilitado</a>
+            <b>inHabilitado</b>
+        </field>
+         <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.ByteToStringTypeConverter">
+            <a>adjunto_1</a>
+            <b>adjunto_1</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.ByteToStringTypeConverter">
+            <a>adjunto_2</a>
+            <b>adjunto_2</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.ByteToStringTypeConverter">
+            <a>adjunto_3</a>
+            <b>adjunto_3</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.ByteToStringTypeConverter">
+            <a>adjunto_4</a>
+            <b>adjunto_4</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.ByteToStringTypeConverter">
+            <a>adjunto_5</a>
+            <b>adjunto_5</b>
+        </field>
+        <field>
+            <a>items</a>
+            <b>items</b>
+            <a-hint>com.axteroid.ose.server.tools.edocu.EGuiaDocumentoItem</a-hint>
+            <b-hint>com.axteroid.ose.server.ubl20.gateway.batch.EGuiaItemCliente</b-hint>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.batch.EResumenCliente</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.EResumenDocumento</class-b>
+        <field  custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIntegerTypeConverter">
+            <a>inHabilitado</a>
+            <b>inHabilitado</b>
+        </field>
+        <field>
+            <a>items</a>
+            <b>items</b>
+            <a-hint>com.axteroid.ose.server.ubl20.gateway.batch.EResumenItemCliente</a-hint>
+            <b-hint>com.axteroid.ose.server.tools.edocu.EResumenDocumentoItem</b-hint>
+        </field>
+    </mapping>
+
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.batch.EResumenItemCliente</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.EResumenDocumentoItem</class-b>
+        <field  custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNumeroTypeConverter">
+            <a>numeroDocumentoBaja</a>
+            <b>numeroDocumentoBaja</b>
+        </field>
+        <field  custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNumeroTypeConverter">
+            <a>numeroCorrelativoInicio</a>
+            <b>numeroCorrelativoInicio</b>
+        </field>
+        <field  custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNumeroTypeConverter">
+            <a>numeroCorrelativoFin</a>
+            <b>numeroCorrelativoFin</b>
+        </field>
+    </mapping>
+
+
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.model.ComprobanteE</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.model.DocumentoBase</class-b>
+        <field-exclude>
+            <a>id</a>
+            <b>id</b>
+        </field-exclude>
+    </mapping>
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.ws.response.EDocumentResult</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.model.ComprobanteE</class-b>
+        <field>
+            <a>idDocument</a>
+            <b>idDocumento</b>
+        </field>
+        <field>
+            <a>typeDocument</a>
+            <b>tipoDocumento</b>
+        </field>
+        <field>
+            <a>status</a>
+            <b>estado</b>
+        </field>
+        <field>
+            <a>messages</a>
+            <b>comprobanteLog</b>
+            <a-hint>com.axteroid.ose.server.ubl20.gateway.response.Message</a-hint>
+            <b-hint>com.axteroid.ose.server.ubl20.model.ComprobanteELog</b-hint>
+        </field>
+    </mapping>
+
+    <mapping>
+        <class-a>com.axteroid.ose.server.ubl20.gateway.response.Message</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.model.ComprobanteELog</class-b>
+        <field>
+            <a>codeStatus</a>
+            <b>codigoEstado</b>
+        </field>
+        <field>
+            <a>descriptionStatus</a>
+            <b>descripcionEstado</b>
+        </field>
+        <field>
+            <a>descriptionDetail</a>
+            <b>descripcionError</b>
+        </field>
+        <field>
+            <a>codeDetail</a>
+            <b>codigoError</b>
+        </field>
+    </mapping>
+        
+    <!-- RETENCIONES -->
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.ubl20.gateway.batch.ERetencionCliente</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.ERetencionDocumento</class-b>
+        <field>
+            <a>inHabilitado</a>
+            <b>inHabilitado</b>
+        </field>
+        <field  custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToSerieNumeroTypeConverter">
+            <a>serieNumeroRetencion</a>
+            <b>serieNumeroRetencion</b>
+        </field>
+        <field>
+            <a>items</a>
+            <b>items</b>
+            <a-hint>com.axteroid.ose.server.ubl20.gateway.batch.ERetencionItemCliente</a-hint>
+            <b-hint>com.axteroid.ose.server.tools.edocu.ERetencionDocumentoItem</b-hint>
+        </field>
+    </mapping>
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.tools.edocu.ERetencionDocumento</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.batch.ERetencionCliente</class-b>
+        <field>
+            <a>inHabilitado</a>
+            <b>inHabilitado</b>
+        </field>
+        <field>
+            <a>items</a>
+            <b>items</b>
+            <a-hint>com.axteroid.ose.server.tools.edocu.ERetencionDocumentoItem</a-hint>
+            <b-hint>com.axteroid.ose.server.ubl20.gateway.ERetencionItemCliente</b-hint>
+        </field>
+    </mapping>    
+    <!-- PERCEPCIONES -->
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.ubl20.gateway.batch.EPercepcionCliente</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.EPercepcionDocumento</class-b>
+        <field>
+            <a>inHabilitado</a>
+            <b>inHabilitado</b>
+        </field>
+        <field  custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToSerieNumeroTypeConverter">
+            <a>serieNumeroPercepcion</a>
+            <b>serieNumeroPercepcion</b>
+        </field>
+        <field>
+            <a>items</a>
+            <b>items</b>
+            <a-hint>com.axteroid.ose.server.ubl20.gateway.batch.EPercepcionItemCliente</a-hint>
+            <b-hint>com.axteroid.ose.server.tools.edocu.EPercepcionDocumentoItem</b-hint>
+        </field>
+    </mapping>
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.tools.edocu.EPercepcionDocumento</class-a>
+        <class-b>com.axteroid.ose.server.ubl20.gateway.batch.EPercepcionCliente</class-b>
+        <field>
+            <a>inHabilitado</a>
+            <b>inHabilitado</b>
+        </field>
+        <field>
+            <a>items</a>
+            <b>items</b>
+            <a-hint>com.axteroid.ose.server.tools.edocu.EPercepcionDocumentoItem</a-hint>
+            <b-hint>com.axteroid.ose.server.ubl20.gateway.batch.EPercepcionItemCliente</b-hint>
+        </field>
+    </mapping> 
+</mappings>

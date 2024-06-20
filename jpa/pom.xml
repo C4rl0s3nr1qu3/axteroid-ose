@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>axteroid-ose-server</groupId>
+    <artifactId>axteroid-ose-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>jpa</artifactId>
+      <packaging>jar</packaging>
+  <name>jpa</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    
+  </properties>
+  <dependencies>
+  	 	<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.10.Final</version>
+			<exclusions>
+        		<exclusion>
+            		<groupId>antlr</groupId>
+            		<artifactId>antlr</artifactId>
+        		</exclusion>
+    		</exclusions>
+        </dependency>
+        <dependency>
+    		<groupId>org.eclipse.persistence</groupId>
+    		<artifactId>javax.persistence</artifactId>
+    		<version>2.1.1</version>
+		</dependency>
+  </dependencies>
+</project>

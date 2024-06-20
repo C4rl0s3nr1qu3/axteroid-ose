@@ -1,0 +1,18 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header>
+        <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <wsse:UsernameToken>
+                <wsse:Username>20478005017YESSICA1</wsse:Username>
+                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">OseServer</wsse:Password>
+            </wsse:UsernameToken>
+        </wsse:Security>
+    </soapenv:Header>
+    <soapenv:Body>
+        <dlwmin:getStatusCdr xmlns:dlwmin="http://service.sunat.gob.pe" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <rucComprobante>RUC</rucComprobante>
+            <tipoComprobante>TIPO</tipoComprobante>
+            <serieComprobante>SERIE</serieComprobante>
+            <numeroComprobante>SECUENCIAL</numeroComprobante>
+        </dlwmin:getStatusCdr>
+    </soapenv:Body>
+</soapenv:Envelope>

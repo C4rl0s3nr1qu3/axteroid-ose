@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cxf="http://cxf.apache.org/core"
+    xmlns:jaxws="http://cxf.apache.org/jaxws"    
+    xmlns:soap="http://cxf.apache.org/bindings/soap"       
+    xsi:schemaLocation="http://cxf.apache.org/core 
+       		http://cxf.apache.org/schemas/core.xsd
+       		http://cxf.apache.org/jaxws 
+       		http://cxf.apache.org/schemas/jaxws.xsd        		
+       		http://www.springframework.org/schema/beans 
+       		http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+    
+	<bean id="axteroidOseSoapSecurityInterceptorBean" class="com.axteroid.ose.server.securitysoap.interceptor.AxteroidOseSoapSecurityInterceptor" />    
+    <bean id="axteroidOseSoapCallbackBean" class="com.axteroid.ose.server.securitysoap.callback.AxteroidOseSoapCallback"/>
+    <bean id="axteroidOseServerWsImplBean" class="pe.gob.sunat.service.AxteroidOseServerWsImpl"/>
+    
+    <jaxws:endpoint id="axteroidOseServerWsImplInvoker" implementor="#axteroidOseServerWsImplBean" address="/billService">
+        <jaxws:properties>
+            <entry key="mtom-enabled" value="false"/>
+            <!-- <entry key="attachment-directory" value="/tmp/"/>
+            <entry key="attachment-directory" value="%TMP%"/>
+        	<entry key="attachment-memory-threshold" value="4000000"/>-->
+            <entry key="faultStackTraceEnabled" value="false" />
+            <entry key="exceptionMessageCauseEnabled" value="true" />
+        </jaxws:properties>
+        <jaxws:inInterceptors>
+        	<bean class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">
+        		<constructor-arg>
+            		<map>
+                		<entry key="action" value="UsernameToken" />
+                		<entry key="passwordType" value="PasswordText" />
+                		<entry key="passwordCallbackRef" value-ref="axteroidOseSoapCallbackBean" />
+            		</map>
+        		</constructor-arg>
+   		 	</bean>
+        </jaxws:inInterceptors>  
+        <jaxws:handlers>   
+        	<bean class="com.axteroid.ose.server.securitysoap.interceptor.MessageContextHandler"/>
+        </jaxws:handlers>
+    </jaxws:endpoint>
+    <cxf:bus>
+        <cxf:features>
+            <cxf:logging/>
+        </cxf:features>
+    </cxf:bus> 
+</beans>
+

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+          xmlns='http://dozer.sourceforge.net'
+          xsi:schemaLocation='http://dozer.sourceforge.net
+                   http://dozer.sourceforge.net/schema/beanmapping.xsd'>
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.tools.edocu.EResumenDocumento</class-a>
+        <class-b>sunat.names.specification.ubl.peru.schema.xsd.summarydocuments_1.SummaryDocumentsType</class-b>
+        <field>
+            <a>items</a>
+            <b>summaryDocumentsLine</b>
+            <a-hint>com.axteroid.ose.server.tools.edocu.EResumenDocumentoItem</a-hint>
+            <b-hint>sunat.names.specification.ubl.peru.schema.xsd.sunataggregatecomponents_1.SummaryDocumentsLineType
+            </b-hint>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="CustomizationIDType"
+                >
+            <a>version</a>
+            <b>customizationID</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="UBLVersionIDType"
+                >
+            <a>versionUBL</a>
+            <b>ublVersionID</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>resumenId</a>
+            <b>id</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.DateToXmlGregorianCalendarConverter">
+            <a>fechaGeneracionResumen</a>
+            <b>issueDate</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.DateToXmlGregorianCalendarConverter"
+               custom-converter-param="referenceDate">
+            <a>fechaEmisionComprobante</a>
+            <b>referenceDate</b>
+        </field>
+
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToSignTypeConverter"
+               custom-converter-param="NameType">
+            <a>rucRazonSocialEmisor</a>
+            <b set-method="insertSignatureType">signature</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="CustomerAssignedAccountIDType"
+                >
+            <a>numeroDocumentoEmisor</a>
+            <b>accountingSupplierParty.customerAssignedAccountID</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToListIdentifierTypeConverter"
+               custom-converter-param="AdditionalAccountIDType"
+                >
+            <a>tipoDocumentoEmisor</a>
+            <b is-accessible="true">accountingSupplierParty.additionalAccountID</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPartyLegalEntityTypeConverter"
+               custom-converter-param="RegistrationNameType">
+            <a>razonSocialEmisor</a>
+            <b set-method="insertPartyLegalEntity">accountingSupplierParty.party.partyLegalEntity</b>
+        </field>
+
+
+
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.tools.edocu.EResumenDocumentoItem</class-a>
+        <class-b>sunat.names.specification.ubl.peru.schema.xsd.sunataggregatecomponents_1.SummaryDocumentsLineType
+        </class-b>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="LineIDType">
+            <a>numeroFila</a>
+            <b>lineID</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCodeTypeConverter"
+               custom-converter-param="DocumentTypeCodeType">
+            <a>tipoDocumento</a>
+            <b>documentTypeCode</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="IdentifierType">
+            <a>serieGrupoDocumento</a>
+            <b>documentSerialID</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="IdentifierType">
+            <a>numeroCorrelativoInicio</a>
+            <b>startDocumentNumberID</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="IdentifierType">
+            <a>numeroCorrelativoFin</a>
+            <b>endDocumentNumberID</b>
+
+        </field>
+
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPaymentTypeConverter"
+               custom-converter-param="totalValorVentaOpGravadasConIgv"   >
+            <a get-method="buildTotalValorVentaOpGravadasConIgv">totalValorVentaOpGravadasConIgv</a>
+
+            <b set-method="insertBillingPayment">billingPayment</b>
+        </field>
+
+       <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPaymentTypeConverter"
+               custom-converter-param="totalValorVentaOpExoneradasIgv"   >
+            <a get-method="buildTotalValorVentaOpExoneradasIgv">totalValorVentaOpExoneradasIgv</a>
+
+            <b set-method="insertBillingPayment">billingPayment</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPaymentTypeConverter"
+               custom-converter-param="totalValorVentaOpInafectasIgv"   >
+            <a get-method="buildTotalValorVentaOpInafectasIgv">totalValorVentaOpInafectasIgv</a>
+
+            <b set-method="insertBillingPayment">billingPayment</b>
+        </field>
+        
+        <!-- JLCB/JSS = WARRADAS -->
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPaymentTypeConverter"
+               custom-converter-param="totalValorVentaOpGratuitas"   >
+            <a get-method="buildTotalValorVentaOpGratuitas">totalValorVentaOpGratuitas</a>
+
+            <b set-method="insertBillingPayment">billingPayment</b>
+        </field>
+        
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAllowanceChargeTypeConverter"
+               custom-converter-param="totalOtrosCargos"
+                >
+            <a get-method="buildTotalOtrosCargos">totalOtrosCargos</a>
+            <b set-method="insertAllowanceCharge">allowanceCharge</b>
+        </field>
+
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTaxTotalTypeConverter"
+               custom-converter-param="TotalIsc">
+            <a get-method="buildTotalIsc">totalIsc</a>
+
+            <b set-method="insertTaxTotalType">taxTotal</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTaxTotalTypeConverter"
+               custom-converter-param="TotalOtrosTributos">
+            <a get-method="buildTotalOtrosTributos">totalOtrosTributos</a>
+
+            <b set-method="insertTaxTotalType">taxTotal</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTaxTotalTypeConverter"
+               custom-converter-param="TotalIgv">
+            <a get-method="buildTotalIgv">totalIgv</a>
+
+            <b set-method="insertTaxTotalType">taxTotal</b>
+        </field>
+
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAmountTypeConverter"
+               custom-converter-param="AmountType">
+            <a get-method="buildTotalVenta">totalVenta</a>
+            <b>totalAmount</b>
+        </field>
+
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>sunat.names.specification.ubl.peru.schema.xsd.summarydocuments_1.SummaryDocumentsType</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.EResumenDocumento</class-b>
+        <field>
+            <a>summaryDocumentsLine</a>
+            <b>items</b>
+            <a-hint>sunat.names.specification.ubl.peru.schema.xsd.sunataggregatecomponents_1.SummaryDocumentsLineType</a-hint>
+            <b-hint>com.axteroid.ose.server.tools.edocu.EResumenDocumentoItem</b-hint>
+        </field>
+        <field>
+            <a>customizationID.value</a>
+            <b>version</b>
+        </field>
+        <field>
+            <a>ublVersionID.value</a>
+            <b>versionUBL</b>
+        </field>
+        <field>
+            <a>id.value</a>
+            <b>resumenId</b>
+        </field>
+        <field>
+            <a>issueDate.value</a>
+            <b>fechaGeneracionResumen</b>
+        </field>
+        <field>
+            <a>referenceDate.value</a>
+            <b>fechaEmisionComprobante</b>
+        </field>
+
+        <field>
+            <a>accountingSupplierParty.customerAssignedAccountID.value</a>
+            <b>numeroDocumentoEmisor</b>
+        </field>
+        <field>
+            <a>accountingSupplierParty.additionalAccountID[0].value</a>
+            <b>tipoDocumentoEmisor</b>
+        </field>
+
+        <field>
+            <a>accountingSupplierParty.party.partyLegalEntity[0].registrationName.value</a>
+            <b>razonSocialEmisor</b>
+        </field>
+
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>sunat.names.specification.ubl.peru.schema.xsd.sunataggregatecomponents_1.SummaryDocumentsLineType</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.EResumenDocumentoItem</class-b>
+        <field>
+            <a>lineID.value</a>
+            <b>numeroFila</b>
+        </field>
+
+        <field>
+            <a>documentTypeCode.value</a>
+            <b>tipoDocumento</b>
+        </field>
+
+        <field>
+            <a>documentSerialID.value</a>
+            <b>serieGrupoDocumento</b>
+        </field>
+
+        <field>
+            <a>startDocumentNumberID.value</a>
+            <b>numeroCorrelativoInicio</b>
+        </field>
+
+        <field>
+            <a>endDocumentNumberID.value</a>
+            <b>numeroCorrelativoFin</b>
+        </field>
+
+        <field>
+            <a>allowanceCharge[0].amount.value</a>
+            <b>totalOtrosCargos</b>
+        </field>
+
+        <field>
+            <a>totalAmount.value</a>
+            <b>totalVenta</b>
+        </field>
+
+
+
+    </mapping>
+</mappings>

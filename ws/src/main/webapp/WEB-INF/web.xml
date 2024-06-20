@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+	id="WebApp_ID" version="3.0">
+	<display-name>com.axteroid.ose.server.wssoap</display-name>
+	<description>AxteroidOseServer-SOAP</description>
+  <servlet>
+    <description>Apache CXF Endpoint SOAP</description>
+    <display-name>cxfSoap</display-name>
+    <servlet-name>cxfSoap</servlet-name>
+    <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cxfSoap</servlet-name>
+    <url-pattern>/*</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>60</session-timeout>
+  </session-config>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <!-- 
+    <param-value>WEB-INF/cxf-beans.xml</param-value> 
+    <param-value>classpath*:META-INF/spring/applicationContext.xml</param-value> 
+    -->
+    <param-value>classpath*:META-INF/axteroid/cfx-beans-axteroid-soap.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+</web-app>

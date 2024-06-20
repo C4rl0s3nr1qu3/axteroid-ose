@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="axteroidPersistence" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:/AXTEROIDJDS</jta-data-source>	
+		<class>com.axteroid.ose.server.jpa.model.ComprobantesPagoElectronicos</class>
+		<class>com.axteroid.ose.server.jpa.model.ComprobantesPagoElectronicosPK</class>
+		<class>com.axteroid.ose.server.jpa.model.Documento</class>
+		<class>com.axteroid.ose.server.jpa.model.Emisor</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatAutorizacionComprobPagoFisico</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatAutorizacionComprobPagoFisicoPK</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatAutorizacionRangosContingencia</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatAutorizacionRangosContingenciaPK</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatCertificadoEmisor</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatCertificadoEmisorPK</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatComprobantesPagoElectronicos</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatComprobantesPagoElectronicosPK</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatContribuyente</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatContribuyenteAsociadoEmisor</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatContribuyenteAsociadoEmisorPK</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatPadronContribuyente</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatPadronContribuyentePK</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatParametro</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatParametroPK</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatPlazosExcepcionales</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatPlazosExcepcionalesPK</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatAcuseReciboSunat</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatCuadreDiarioDetalle</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatEstablecimientosAnexos</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatEstablecimientosAnexosPK</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatPadronVigencia</class>
+		<class>com.axteroid.ose.server.jpa.model.SunatPadronVigenciaPK</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<shared-cache-mode>NONE</shared-cache-mode>
+		<properties>    
+		    <property name="hibernate.archive.autodetection" value="class"/>
+      		<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+      		<property name="hibernate.show_sql" value="false"/>
+      		<property name="hibernate.format_sql" value="true"/>
+      		<property name="hibernate.use_sql_comments" value="true"/>
+      		<property name="hibernate.generate_statistics" value="true"/>
+       </properties>
+	</persistence-unit>
+</persistence>

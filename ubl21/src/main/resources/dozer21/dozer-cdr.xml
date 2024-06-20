@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+          xmlns='http://dozer.sourceforge.net'
+          xsi:schemaLocation='http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd'>
+    <mapping type="one-way" >
+        <class-a>com.axteroid.ose.server.tools.edocu.EDocumentoCDR</class-a>
+        <class-b>oasis.names.specification.ubl.schema.xsd.applicationresponse_2_1.ApplicationResponseType</class-b>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl21.gateway.sunat.dozer21.StringToExtensionContentType"
+               custom-converter-param="UBLExtensionsType">
+            <a>ubl_Extensions</a>
+            <b>ublExtensions</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl21.gateway.sunat.dozer21.StringToIdentifierTypeConverter"
+               custom-converter-param="UBLVersionIDType">
+            <a>versionUBL</a>
+            <b>ublVersionID</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl21.gateway.sunat.dozer21.StringToIdentifierTypeConverter"
+               custom-converter-param="CustomizationIDType">
+            <a>versionCDR</a>
+            <b>customizationID</b>
+        </field>
+       <field custom-converter="com.axteroid.ose.server.ubl21.gateway.sunat.dozer21.StringToIdTypeConverter">
+            <a>autorización_Comprobante</a>
+            <b>id</b>
+        </field>
+         <field custom-converter="com.axteroid.ose.server.ubl21.gateway.sunat.dozer21.DateToXmlGregorianCalendarConverter"
+         	custom-converter-param="IssueDateType">
+            <a>fecha_recepcion_comprobante</a>
+           <b>issueDate</b>
+        </field>                
+        <field custom-converter="com.axteroid.ose.server.ubl21.gateway.sunat.dozer21.DateToXmlGregorianCalendarConverter"
+				custom-converter-param="IssueTimeType">
+            <a>hora_recepcion_comprobante</a>
+            <b>issueTime</b>
+        </field>            
+        <field custom-converter="com.axteroid.ose.server.ubl21.gateway.sunat.dozer21.DateToXmlGregorianCalendarConverter"
+        		custom-converter-param="ResponseDateType">
+            <a>fecha_comprobacion_comprobante</a>
+            <b>responseDate</b>
+        </field>        
+        <field custom-converter="com.axteroid.ose.server.ubl21.gateway.sunat.dozer21.DateToXmlGregorianCalendarConverter"
+				custom-converter-param="ResponseTimeType">
+            <a>hora_comprobacion_comprobante</a>
+            <b>responseTime</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl21.gateway.sunat.dozer21.StringToPartyLegalEntityCompanyTypeConverter">
+            <a>ruc_emisor_pse</a>
+            <b is-accessible="true">senderParty.partyLegalEntity</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl21.gateway.sunat.dozer21.StringToPartyLegalEntityCompanyTypeConverter">
+            <a>ruc_ose</a>
+            <b is-accessible="true">receiverParty.partyLegalEntity</b>
+        </field>           
+        <field custom-converter="com.axteroid.ose.server.ubl21.gateway.sunat.dozer21.StringToDR_TypeConverter">
+            <a>document_response</a>
+            <b set-method="insertDocumentResponse">documentResponse</b>
+        </field>     
+          
+    </mapping>
+
+</mappings>

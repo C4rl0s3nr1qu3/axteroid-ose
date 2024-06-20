@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+          xmlns='http://dozer.sourceforge.net'
+          xsi:schemaLocation='http://dozer.sourceforge.net
+                   http://dozer.sourceforge.net/schema/beanmapping.xsd'>
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.tools.edocu.EGuiaDocumento</class-a>
+        <class-b>oasis.names.specification.ubl.schema.xsd.despatchadvice_2.DespatchAdviceType</class-b>
+        <field>
+            <a>items</a>
+            <b>despatchLine</b>
+            <a-hint>com.axteroid.ose.server.tools.edocu.EGuiaDocumentoItem</a-hint>
+            <b-hint>oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DespatchLineType</b-hint>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="UBLVersionIDType">
+            <a>versionUBL</a>
+            <b>ublVersionID</b>
+        </field>
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+               custom-converter-param="CustomizationIDType">
+            <a>version</a>
+            <b>customizationID</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>serieNumeroGuia</a>
+            <b>id</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.DateToXmlGregorianCalendarConverter">
+            <a>fechaEmisionGuia</a>
+            <b>issueDate</b>
+        </field>
+
+<!--         <field>
+            <a>horaEmisionGuia</a>
+            <b set-method="insertIssueTime">issueTime</b>
+        </field> -->
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCodeTypeConverter"
+               custom-converter-param="DespatchAdviceTypeCodeType">
+            <a>tipoDocumentoGuia</a>
+            <b>despatchAdviceTypeCode</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.DateToXmlGregorianCalendarConverter">
+            <a>fechaEmisionGuia</a>
+            <b>issueDate</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTextTypeConverter"
+               custom-converter-param="NoteType">
+            <a>observaciones</a>
+            <b set-method="insertNoteType">note</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>serieGuiaBaja</a>
+            <b set-method="insertOrderReferenceID">orderReference</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToOrderTypeCodeType">
+        		<!--  custom-converter-param="OrderTypeCodeType">-->
+            <a get-method="buildCodigoTipoGuiaBaja">codigoTipoGuiaBaja</a>
+            <b set-method="insertOROrderTypeCode">orderReference</b>
+        </field> 
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>numeroDocumentoRelacionado</a>
+            <b set-method="insertADRefID">additionalDocumentReference</b>
+        </field> 
+        
+		<field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCodeTypeConverter"
+        	custom-converter-param="DocumentTypeCodeType">
+            <a>codigoDocumentoRelacionado</a>
+            <b set-method="insertADRefDocumentTypeCode">additionalDocumentReference</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToSignTypeConverter"
+               custom-converter-param="NameType">
+            <a>rucRazonSocialRemitente</a>
+            <b set-method="insertSignatureType">signature</b>
+        </field>        
+        
+		<field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCustomerAssignedAccountIDType">
+			<a get-method="buildNumeroDocumentoRemitente">numeroDocumentoRemitente</a>
+			<b>despatchSupplierParty.customerAssignedAccountID</b>
+		</field>
+        
+	<!-- <FIX02 -->
+<!--         <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPartyNameTypeConverter"
+               custom-converter-param="NameType">
+            <a>razonSocialRemitente</a>
+            <b set-method="insertPartyName">despatchSupplierParty.party.partyName</b> -->
+<!--             <b is-accessible="true">despatchSupplierParty.party.partyName</b> -->
+	<!-- FIX02> -->
+<!--         </field> -->
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPartyLegalEntityTypeConverter"
+               custom-converter-param="RegistrationNameType">
+            <a>razonSocialRemitente</a>
+            <b set-method="insertPartyLegalEntity">despatchSupplierParty.party.partyLegalEntity</b>
+        </field>         
+        
+		<field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCustomerAssignedAccountIDType">
+			<a get-method="buildNumeroDocumentoDestinatario">numeroDocumentoDestinatario</a>
+			<b>deliveryCustomerParty.customerAssignedAccountID</b>
+		</field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPartyLegalEntityTypeConverter"
+               custom-converter-param="RegistrationNameType">
+            <a>razonSocialDestinatario</a>
+            <b set-method="insertPartyLegalEntity">deliveryCustomerParty.party.partyLegalEntity</b>
+        </field>
+        
+		<field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCustomerAssignedAccountIDType">
+			<a get-method="buildNumeroDocumentoEstablecimiento">numeroDocumentoEstablecimiento</a>
+			<b set-method="insertSSCustomerAssignedAccountIDType">sellerSupplierParty</b>
+		</field>       
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPartyLegalEntityTypeConverter"
+				custom-converter-param="RegistrationNameType">
+            <a>razonSocialEstablecimiento</a>
+            <b set-method="insertSSPartyLegalEntityType">sellerSupplierParty</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>IDShipment</a>
+            <b>shipment.id</b>
+        </field>          
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToCodeTypeConverter"
+        	custom-converter-param="HandlingCodeType">
+            <a>motivoTraslado</a>
+            <b>shipment.handlingCode</b>
+        </field>        
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTextTypeConverter"
+               custom-converter-param="InformationType">
+            <a>descripcionMotivoTraslado</a>
+            <b>shipment.information</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.BooleanToSplitConsignmentIndicatorTypeConverter">
+            <a>indTransbordoProgramado</a>
+            <b>shipment.splitConsignmentIndicator</b>
+        </field>
+                
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToMeasureTypeConverter"
+        		custom-converter-param="GrossWeightMeasureType">
+            <a get-method="buildPesoBrutoTotalBienes">totalPesoBruto</a>
+            <b>shipment.grossWeightMeasure</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTransportModeType">
+            <a>modalidadTraslado</a>
+            <b set-method="insertTransportModeType">shipment.shipmentStage</b>
+        </field>                        
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.DateToXmlGregorianCalendarConverter"  
+        		custom-converter-param="startDate">
+            <a>fechaInicioTraslado</a>
+            <b set-method="insertStartDateType">shipment.shipmentStage</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTotalTransportHandlingUnitQuantityTypeConverter">
+<!--                custom-converter-param="value"> -->
+            <a>numeroBultos</a>
+            <b>shipment.totalTransportHandlingUnitQuantity</b>
+        </field>        
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPartyIdentificationType">
+            <a get-method="buildTransportista">numeroRucTransportista</a>
+            <b set-method="insertPartyIdentificationType">shipment.shipmentStage</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPartyNameTypeConverter">
+        		<!-- custom-converter-param="NameType"> -->
+            <a>razonSocialTransportista</a>
+            <b set-method="insertPartyNameType">shipment.shipmentStage</b>
+        </field>  
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToRoadTransportType">
+            <a>numeroPlacaVehiculo</a>
+            <b set-method="insertRoadTransportType">shipment.shipmentStage</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToPersonTypeConverter">
+            <a get-method="buildConductor">numeroDocumentoConductor</a>
+            <b set-method="insertDriverPersonType">shipment.shipmentStage</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToLocationTypeConverter">
+            <a>codigoPuerto</a>
+            <b>shipment.firstArrivalPortLocation</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAddressType">
+            <a get-method="buildDireccionPtoLlegada">ubigeoDireccionPtoLlegada</a>
+            <b set-method="insertDeliveryAddress">shipment</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToTransportHandlingUnitTypeConverter">
+            <a>numeroContenedor</a>
+            <b set-method="insertTransportHandlingUnitType">shipment.transportHandlingUnit</b>
+        </field>        
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToAddressType">
+            <a get-method="buildDireccionPtoPartida">ubigeoDireccionPtoPartida</a>
+            <b>shipment.originAddress</b>
+        </field>                
+
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>com.axteroid.ose.server.tools.edocu.EGuiaDocumentoItem</class-a>
+        <class-b>oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DespatchLineType
+        </class-b>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdTypeConverter">
+            <a>numeroOrdenItem</a>
+            <b>id</b>
+        </field>        
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToIdentifierTypeConverter"
+         	custom-converter-param="LineIDType">	
+            <a>numeroOrdenItem</a>
+            <b set-method="insertOrderLineReferenceType">orderLineReference</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDespatchQuantityTypeConverter"
+               custom-converter-param="value">
+            <a>cantidad</a>
+            <b>deliveredQuantity</b>
+        </field>
+        
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToDespatchQuantityTypeConverter"
+               custom-converter-param="id">
+            <a>unidadMedida</a>
+            <b>deliveredQuantity</b>
+        </field>
+
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToNameTypeConverter"
+               custom-converter-param="NameType">
+            <a>descripcion</a>
+            <b>item.name</b>
+        </field>
+       
+        <field custom-converter="com.axteroid.ose.server.ubl20.gateway.sunat.dozer.StringToItemIdentificationTypeConverter">
+            <a>codigo</a>
+            <b set-method="insertSellersItemIdentification">item.sellersItemIdentification</b>
+        </field>
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>oasis.names.specification.ubl.schema.xsd.despatchadvice_2.DespatchAdviceType</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.EGuiaDocumento</class-b>
+        <field>
+            <a>despatchLine</a>
+            <b>items</b>
+            <a-hint>oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DespatchLineType</a-hint>
+            <b-hint>com.axteroid.ose.server.tools.edocu.EGuiaDocumentoItem</b-hint>
+        </field>
+        <field>
+            <a>ublVersionID.value</a>
+            <b>versionUBL</b>
+        </field>
+        <field>
+            <a>customizationID.value</a>
+            <b>version</b>
+        </field>
+        <field>
+            <a>id.value</a>
+            <b>serieNumeroGuia</b>
+        </field>
+        <field>
+            <a>issueDate.value</a>
+            <b>fechaEmisionGuia</b>
+        </field>
+	<!-- <FIX02 -->
+        <field>
+        	<a>despatchAdviceTypeCode.value</a>
+        	<b>tipoDocumentoGuia</b>
+        </field>
+        <field>
+        	<a>note[0].value</a>
+        	<b>observaciones</b>
+        </field>
+        <field>
+        	<a>orderReference.id.value</a>
+        	<b>serieGuiaBaja</b>
+        </field>
+        <field>
+        	<a>orderReference.orderTypeCode.value</a>
+        	<b>codigoGuiaBaja</b>
+        </field>
+        <field>
+        	<a>additionalDocumentReference.id.value</a>
+        	<b>numeroDocumentoRelacionado</b>
+        </field>
+        <field>
+        	<a>additionalDocumentReference.documentTypeCode.value</a>
+        	<b>codigoDocumentoRelacionado</b>
+        </field>
+        <field>
+        	<a>signature[0].signatoryParty.partyIdentification[0].id.value</a>
+        	<b>rucRazonSocialRemitente</b>
+        </field>
+        <field>
+        	<a>despatchSupplierParty.customerAssignedAccountID.value</a>
+        	<b>numeroDocumentoRemitente</b>
+        </field>
+        <field>
+        	<a>despatchSupplierParty..party.partyLegalEntity[0].registrationName.value</a>
+        	<b>razonSocialRemitente</b>
+        </field>
+        <field>
+        	<a>deliveryCustomerParty.customerAssignedAccountID.value</a>
+        	<b>numeroDocumentoDestinatario</b>
+        </field>
+        <field>
+        	<a>deliveryCustomerParty.party.partyLegalEntity[0].registrationName.value</a>
+        	<b>razonSocialDestinatario</b>
+        </field> 
+        <field>
+        	<a>sellerSupplierParty.customerAssignedAccountID.value</a>
+        	<b>numeroDocumentoEstablecimiento</b>
+        </field>
+        <field>
+        	<a>sellerSupplierParty.customerAssignedAccountID.schemeID</a>
+        	<b>tipoDocumentoEstablecimiento</b>
+        </field>      
+        <field>
+        	<a>sellerSupplierParty.party.partyLegalEntity[0].registrationName.value</a>
+        	<b>razonSocialEstablecimiento</b>
+        </field>
+        <field>
+        	<a>shipment.id.value</a>
+        	<b>IDShipment</b>
+        </field>
+        <field>
+        	<a>shipment.handlingCode.value</a>
+        	<b>motivoTraslado</b>
+        </field>
+        <field>
+        	<a>shipment.information.value</a>
+        	<b>descripcionMotivoTraslado</b>
+        </field>
+        <field>
+        	<a>shipment.splitConsignmentIndicator.value</a>
+        	<b>indTransbordoProgramado</b>
+        </field>
+        <field>
+        	<a>shipment.grossWeightMeasure.value</a>
+        	<b>pesoBrutoTotalBienes</b>
+        </field>
+        <field>
+        	<a>shipment.shipmentStage[0].transportModeCode.value</a>
+        	<b>modalidadTraslado</b>
+        </field>
+        <field>
+        	<a>shipment.shipmentStage[0].transitPeriod.startDate.value</a>
+        	<b>fechaInicioTraslado</b>
+        </field>
+        <field>
+        	<a>shipment.totalTransportHandlingUnitQuantity.value</a>
+        	<b>numeroBultos</b>
+        </field>
+        
+        <field>
+        	<a>shipment.grossWeightMeasure.unitCode</a>
+        	<b>unidadMedidaPesoBruto</b>
+        </field>
+        
+        <field>
+        	<a>shipment.shipmentStage[0].carrierParty[0].partyIdentification[0].id.schemeID</a>
+        	<b>tipoDocumentoTransportista</b>
+        </field>
+        <field>
+        	<a>shipment.shipmentStage[0].carrierParty[0].partyIdentification[0].id.value</a>
+        	<b>numeroRucTransportista</b>
+        </field>
+        <field>
+        	<a>shipment.shipmentStage[0].carrierParty[0].partyName[0].name.value</a>
+        	<b>razonSocialTransportista</b>
+        </field>
+        <field>
+        	<a>shipment.shipmentStage[0].driverPerson.id.value</a>
+        	<b>numeroDocumentoConductor</b>
+        </field>
+        <field>
+        	<a>shipment.shipmentStage[0].driverPerson.id.schemeID</a>
+        	<b>tipoDocumentoConductor</b>
+        </field>
+        <field>
+        	<a>shipment.shipmentStage[0].transportMeans.roadTransport.licensePlateID.value</a>
+        	<b>numeroPlacaVehiculo</b>
+        </field>
+        <field>
+        	<a>shipment.firstArrivalPortLocation.id.value</a>
+        	<b>codigoPuerto</b>
+        </field>        
+        <field>
+        	<a>shipment.delivery.deliveryAddress.id.value</a>
+        	<b>ubigeoPtoLLegada</b>
+        </field> 
+        <field>
+        	<a>shipment.delivery.deliveryAddress.streetName.value</a>
+        	<b>direccionPtoLLegada</b>
+        </field>
+        <field>
+        	<a>shipment.transportHandlingUnit[0].transportEquipment[0].id.value</a>
+        	<b>numeroContenedor</b>
+        </field>
+        <field>
+        	<a>shipment.originAddress.id.value</a>
+        	<b>ubigeoPtoPartida</b>
+        </field>
+        <field>
+        	<a>shipment.originAddress.streetName.value</a>
+        	<b>direccionPtoPartida</b>
+        </field>
+        <field>
+        	<a>deliveryCustomerParty.customerAssignedAccountID.schemeID</a>
+        	<b>tipoDocumentoDestinatario</b>
+        </field>
+        <field>
+        	<a>despatchSupplierParty.customerAssignedAccountID.schemeID</a>
+        	<b>tipoDocumentoRemitente</b>
+        </field>
+	<!-- FIX02> -->        
+    </mapping>
+
+    <mapping type="one-way">
+        <class-a>oasis.names.specification.ubl.schema.xsd.commonaggregatecomponents_2.DespatchLineType</class-a>
+        <class-b>com.axteroid.ose.server.tools.edocu.EGuiaDocumentoItem</class-b>
+        <field>
+            <a>orderLineReference[0].lineID.value</a>
+            <b>numeroOrdenItem</b>
+        </field>
+        
+        <field>
+            <a>deliveredQuantity.value</a>
+            <b>cantidad</b>
+        </field>
+        
+        <field>
+            <a>deliveredQuantity.unitCode</a>
+            <b>unidadMedida</b>
+        </field>
+        
+        <field>
+            <a>item.name.value</a>
+            <b>descripcion</b>
+        </field>
+        
+        <field>
+            <a>item.sellersItemIdentification.id.value</a>
+            <b>codigo</b>
+        </field>
+    </mapping>
+</mappings>
